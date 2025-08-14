@@ -1,77 +1,80 @@
-# 🛠 Menu Master de Suporte Técnico (Batch Script)
+# 🛠 Menu Master de Suporte Técnico - SoftWave Solutions V1.0
 
-Este é um script em **Batch (.bat)** que reúne diversos comandos úteis para **manutenção, otimização e diagnóstico do Windows**, tudo em um **menu interativo** fácil de usar.
+Script em **Batch (.bat)** para manutenção, otimização e diagnóstico do Windows, reunindo ferramentas essenciais em um **menu interativo**.
 
-Ideal para técnicos de informática, entusiastas e usuários que querem ter acesso rápido a ferramentas essenciais do sistema.
-
----
-
-## 📌 Funcionalidades
-
-O menu oferece diversas opções, como:
-
-1. Verificar e reparar disco (CHKDSK)  
-2. Reparar arquivos de sistema (SFC)  
-3. Limpar arquivos temporários  
-4. Testar memória RAM  
-5. Restaurar sistema  
-6. Testar conectividade de rede (Ping)  
-7. Abrir Gerenciador de Tarefas  
-8. Backup de drivers  
-9. Verificar atualizações do Windows  
-10. Exibir informações do sistema  
-11. Limpar cache DNS  
-12. Reiniciar serviços de rede  
-13. Desfragmentar disco  
-14. Gerenciar usuários locais  
-15. Verificar integridade de arquivos (DISM)  
-16. Ativar/Desativar firewall do Windows  
-17. Abrir Visualizador de Eventos  
-18. Testar velocidade de disco  
-19. Criar ponto de restauração  
-20. Executar comando personalizado (CMD)  
-21. Atualizar programas com Winget  
-22. Limpar histórico e cache do Windows Update  
-23. Monitorar uso de CPU, memória e rede  
-24. Limpar cache de miniaturas  
-25. Gerenciar inicialização de programas  
-26. Desinstalar programas  
-27. Criar backup de pastas importantes  
-28. Encerrar processos travados  
-29. Otimizar desempenho do sistema  
-30. Sair
+Ideal para técnicos de informática, entusiastas e usuários avançados.
 
 ---
 
-## 🚀 Como usar
+## Menus e Funções
 
-1. **Baixe o arquivo** `.bat` deste repositório.  
-2. **Clique com o botão direito** sobre o arquivo e selecione **"Executar como administrador"**.  
-3. Escolha a opção desejada digitando o número e pressionando `Enter`.
+### 1️⃣ Rede
+- Informações completas da rede (ipconfig /all)  
+- Flush DNS  
+- Ping para servidor/IP  
+- Reset Winsock + IP  
+- Rotas de rede (route print)  
+- Conexões ativas (netstat)  
+- Renovar IP  
+- Testar DNS Google  
+- Ver IP público  
+- Limpar cache DNS + resetar rede
 
-> ⚠️ Algumas funções requerem **permissões de administrador**.
+### 2️⃣ Impressoras
+- Corrigir erros: 0x0000011b, 0x00000bcb, 0x00000709  
+- Reiniciar spooler de impressão  
+- Listar impressoras instaladas  
+- Limpar fila de impressão
+
+### 3️⃣ Sistema
+- Reiniciar computador  
+- Otimizar desempenho e limpar arquivos temporários  
+- Atualizar Group Policy  
+- Monitorar processos com maior uso de CPU  
+- Liberar acesso a compartilhamentos  
+- Verificar disco (CHKDSK)  
+- SFC / Scannow  
+- DISM /RestoreHealth  
+- Criar ponto de restauração  
+- Informações do sistema  
+- Desfragmentar disco  
+- Abrir gerenciador de tarefas  
+- Limpar cache do Windows Update  
+- Habilitar plano de energia Alto Desempenho  
+- Ver drivers com problemas  
+- Gerar relatório de bateria
+
+### 4️⃣ Instalar Aplicativos e Drivers
+**Programas**  
+- Google Chrome, Mozilla Firefox, 7-Zip, VLC Media Player  
+- Visual C++ Redistributable  
+- .NET Framework 4.8  
+- LibreOffice, Notepad++  
+- AnyDesk, TeamViewer  
+
+**Drivers**  
+- Intel Drivers (link oficial)  
+- Realtek Drivers (link oficial)  
+- NVIDIA Drivers (link oficial)  
+- AMD Drivers (link oficial)  
+- Windows Update para drivers automáticos
 
 ---
 
-## 💡 Dicas
+## Como usar
+1. Baixar o arquivo `.bat` deste repositório  
+2. Clicar com o botão direito e selecionar **Executar como administrador**  
+3. Escolher a opção desejada digitando o número e pressionando `Enter`
 
-- Recomendo salvar o script em um **pendrive** para uso em diferentes máquinas.  
-- Pode ser personalizado, adicionando ou removendo funções conforme a necessidade.  
-- Para transformar em `.exe`, use ferramentas como [Bat To Exe Converter](https://bat-to-exe-converter.en.softonic.com/).
+> ⚠️ Algumas funções requerem permissões de administrador
 
 ---
 
-## 📷 Exemplo de uso
+## Créditos
+- Desenvolvido por **Igor Cabral**  
+- Versão aprimorada por **Geminike (ChatGPT)**  
 
-```plaintext
-==============================================
-       MENU MASTER DE SUPORTE TECNICO
-         por [Igor Cabral e SoftWave Solutions]
-==============================================
+---
 
- 1. Verificar e Reparar Disco (CHKDSK)
- 2. Reparar Arquivos de Sistema (SFC)
- ...
-30. Sair
-==============================================
-Escolha uma opcao (1-30):
+## Licença
+Licenciado sob **MIT License**. Pode usar, modificar e distribuir livremente.

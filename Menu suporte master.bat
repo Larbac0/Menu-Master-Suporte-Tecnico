@@ -1,5 +1,9 @@
 @echo off
-:: ==== Rodar como Administrador ====
+:: ==============================================
+:: MENU MASTER DE SUPORTE TECNICO - SoftWave Solutions V1.0
+:: Créditos: Igor Cabral
+:: ==============================================
+:: Rodar como administrador
 net session >nul 2>&1
 if %errorLevel% NEQ 0 (
     echo.
@@ -8,8 +12,8 @@ if %errorLevel% NEQ 0 (
     exit
 )
 
-title MENU MASTER DE SUPORTE TECNICO - SOFTWAVE SOLUTIONS
 color 0A
+title MENU MASTER DE SUPORTE TECNICO - SoftWave Solutions V1.0
 
 :menu
 cls
@@ -17,24 +21,25 @@ echo ==================================================
 echo             MENU MASTER SUPORTE TECNICO
 echo ==================================================
 echo 0 - Sair
-echo 1 - Rede 
-echo 2 - Impressoras 
-echo 3 - Sistema 
-echo 4 - Utilitarios Avancados
+echo 1 - Rede
+echo 2 - Impressoras
+echo 3 - Sistema
+echo 4 - Instalar Aplicativos e Drivers
 echo ==================================================
 set /p opcao=Escolha uma opcao: 
 
 if "%opcao%"=="0" goto sair
-if "%opcao%"=="1" goto rede 
+if "%opcao%"=="1" goto rede
 if "%opcao%"=="2" goto impressoras
 if "%opcao%"=="3" goto sistema
-if "%opcao%"=="4" goto utilitarios
+if "%opcao%"=="4" goto instaladores
 
 echo Opcao invalida.
 pause
 goto menu
 
-:: ======== REDE ========
+:: ==============================================
+:: MENU REDE
 :rede
 cls
 echo ================== REDE ==================
@@ -66,7 +71,8 @@ if "%opcao%"=="10" netsh winsock reset & netsh int ip reset & ipconfig /release 
 
 goto rede
 
-:: ======== IMPRESSORAS ========
+:: ==============================================
+:: MENU IMPRESSORAS
 :impressoras
 cls
 echo =============== IMPRESSORAS ===============
@@ -90,7 +96,8 @@ if "%opcao%"=="6" net stop spooler & del /Q /F /S "%systemroot%\System32\spool\P
 
 goto impressoras
 
-:: ======== SISTEMA ========
+:: ==============================================
+:: MENU SISTEMA
 :sistema
 cls
 echo ================= SISTEMA =================
@@ -134,42 +141,6 @@ if "%opcao%"=="16" powercfg /batteryreport & start %userprofile%\battery-report.
 
 goto sistema
 
-:: ======== UTILITARIOS AVANCADOS ========
-:utilitarios
-cls
-echo ========== UTILITARIOS AVANCADOS ==========
-echo 0 - Voltar
-echo 1 - Limpeza Avancada (Temp + Prefetch)
-echo 2 - Mostrar programas instalados
-echo 3 - Reinstalar apps do Windows
-echo 4 - Mostrar espaco livre no disco
-echo 5 - Mostrar arquivos grandes (+100MB)
-echo 6 - Reiniciar Windows Explorer
-echo 7 - Liberar RAM
-echo 8 - Mostrar processos em segundo plano
-echo 9 - Testar velocidade de disco
-echo 10 - Ativar/Desativar Firewall
-echo ===========================================
-set /p opcao=Escolha uma opcao: 
-
-if "%opcao%"=="0" goto menu
-if "%opcao%"=="1" del /q/f/s %TEMP%\* & del /q/f/s C:\Windows\Prefetch\* & echo Limpou geral! & pause & goto utilitarios
-if "%opcao%"=="2" powershell "Get-WmiObject -Class Win32_Product | Select-Object Name, Version | Out-Host" & pause & goto utilitarios
-if "%opcao%"=="3" powershell "Get-AppxPackage -AllUsers| Foreach {Add-AppxPackage -DisableDevelopmentMode -Register '$($_.InstallLocation)\AppXManifest.xml'}" & pause & goto utilitarios
-if "%opcao%"=="4" wmic logicaldisk get size,freespace,caption & pause & goto utilitarios
-if "%opcao%"=="5" powershell "Get-ChildItem -Path C:\ -Recurse -ErrorAction SilentlyContinue | Where-Object { !$_.PSIsContainer -and $_.Length -gt 100MB } | Sort-Object Length -Descending | Select-Object Name, Length, Directory | Out-Host" & pause & goto utilitarios
-if "%opcao%"=="6" taskkill /f /im explorer.exe & start explorer.exe & goto utilitarios
-if "%opcao%"=="7" powershell "Clear-RecycleBin -Force; [System.GC]::Collect()" & pause & goto utilitarios
-if "%opcao%"=="8" powershell "Get-Process | Where-Object {$_.MainWindowTitle -eq ''} | Out-GridView" & pause & goto utilitarios
-if "%opcao%"=="9" winsat disk & pause & goto utilitarios
-if "%opcao%"=="10" netsh advfirewall set allprofiles state off & pause & goto utilitarios
-
-goto utilitarios
-
-:sair
-exit
-
-:: ======== LENTIDAO OTIMIZACAO ========
 :lentidao
 cls
 echo Limpando arquivos temporarios e otimizando sistema...
@@ -184,3 +155,52 @@ del /f /s /q "%LocalAppData%\Microsoft\Windows\Explorer\*.*"
 del /f /s /q "C:\Windows\Prefetch\*.*"
 pause
 goto sistema
+
+:: ==============================================
+:: MENU INSTALADORES E DRIVERS
+:instaladores
+cls
+echo ========== INSTALADORES ESSENCIAIS ==========
+echo 0 - Voltar
+echo --- Programas ---
+echo 1 - Google Chrome
+echo 2 - Mozilla Firefox
+echo 3 - 7-Zip
+echo 4 - VLC Media Player
+echo 5 - Visual C++ Redistributable
+echo 6 - .NET Framework 4.8
+echo 7 - LibreOffice
+echo 8 - Notepad++
+echo 9 - AnyDesk
+echo 10 - TeamViewer
+echo --- Drivers ---
+echo 11 - Intel Drivers
+echo 12 - Realtek Drivers
+echo 13 - NVIDIA Drivers
+echo 14 - AMD Drivers
+echo 15 - Windows Update (Drivers)
+echo =============================================
+set /p opcao=Escolha uma opcao: 
+
+if "%opcao%"=="0" goto menu
+if "%opcao%"=="1" winget install --id=Google.Chrome -e & pause & goto instaladores
+if "%opcao%"=="2" winget install --id=Mozilla.Firefox -e & pause & goto instaladores
+if "%opcao%"=="3" winget install --id=7zip.7zip -e & pause & goto instaladores
+if "%opcao%"=="4" winget install --id=VideoLAN.VLC -e & pause & goto instaladores
+if "%opcao%"=="5" winget install --id=Microsoft.VCRedist.2015+.x64 -e & pause & goto instaladores
+if "%opcao%"=="6" winget install --id=Microsoft.DotNet.Framework.DeveloperPack_4.8 -e & pause & goto instaladores
+if "%opcao%"=="7" winget install --id=LibreOffice.LibreOffice -e & pause & goto instaladores
+if "%opcao%"=="8" winget install --id=Notepad++.Notepad++ -e & pause & goto instaladores
+if "%opcao%"=="9" winget install --id=AnyDesk.AnyDesk -e & pause & goto instaladores
+if "%opcao%"=="10" winget install --id=TeamViewer.TeamViewer -e & pause & goto instaladores
+if "%opcao%"=="11" start "" "https://www.intel.com/content/www/us/en/support/detect.html" & pause & goto instaladores
+if "%opcao%"=="12" start "" "https://www.realtek.com/en/downloads" & pause & goto instaladores
+if "%opcao%"=="13" start "" "https://www.nvidia.com/Download/index.aspx" & pause & goto instaladores
+if "%opcao%"=="14" start "" "https://www.amd.com/en/support" & pause & goto instaladores
+if "%opcao%"=="15" start ms-settings:windowsupdate & pause & goto instaladores
+
+goto instaladores
+
+:: ==============================================
+:sair
+exit
